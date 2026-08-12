@@ -37,6 +37,9 @@ export async function deleteCategory(id: string) {
 
 export async function updateOrderStatus(orderId: string, status: string) {
   const supabase = await createClient();
-  await supabase.from("orders").update({ status }).eq("id", orderId);
+  await supabase
+    .from("orders")
+    .update({ status, status_updated_at: new Date().toISOString() })
+    .eq("id", orderId);
   revalidatePath("/admin/pesanan");
 }

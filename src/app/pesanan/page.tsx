@@ -10,6 +10,13 @@ function formatRp(n: number) {
   return "Rp" + n.toLocaleString("id-ID");
 }
 
+function formatWaktu(iso: string) {
+  const d = new Date(iso);
+  const tanggal = d.toLocaleDateString("id-ID", { day: "numeric", month: "short" });
+  const jam = d.toLocaleTimeString("id-ID", { hour: "2-digit", minute: "2-digit" });
+  return `${tanggal}, ${jam}`;
+}
+
 const STATUS_LABEL: Record<Order["status"], string> = {
   pending: "Menunggu Konfirmasi",
   diproses: "Diproses",
@@ -89,6 +96,9 @@ export default function TrackOrderPage() {
                 {STATUS_LABEL[order.status]}
               </span>
             </div>
+            <p className="text-[11px] mb-2" style={{ color: "var(--ink-muted)" }}>
+              Diperbarui: {formatWaktu(order.status_updated_at)}
+            </p>
             <div className="flex flex-col gap-1 mb-2">
               {order.items.map((i) => (
                 <div key={i.id} className="flex justify-between text-xs">

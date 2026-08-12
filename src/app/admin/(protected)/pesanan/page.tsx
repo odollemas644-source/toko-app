@@ -33,7 +33,11 @@ export default async function AdminOrdersPage() {
                     <p className="text-sm font-medium mt-0.5">{order.customer_name}</p>
                     <p className="text-xs" style={{ color: "var(--ink-muted)" }}>{order.customer_phone}</p>
                   </div>
-                  <OrderStatusSelect orderId={order.id} status={order.status} />
+                  <OrderStatusSelect
+                    orderId={order.id}
+                    status={order.status}
+                    statusUpdatedAt={order.status_updated_at}
+                  />
                 </div>
                 <p className="text-xs mb-2" style={{ color: "var(--ink-muted)" }}>{order.customer_address}</p>
                 {order.notes && (
