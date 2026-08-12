@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Sora, Inter } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/lib/cart-store";
+import PwaRegister from "@/components/PwaRegister";
 
 const sora = Sora({
   variable: "--font-sora",
@@ -16,8 +17,24 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Toko App",
+  title: "Toko Segar Jaya",
   description: "Belanja kebutuhan harian, segar & lengkap.",
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Toko Segar",
+  },
+  icons: {
+    icon: "/icons/icon-192.png",
+    apple: "/icons/icon-180.png",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#2F6B4F",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -27,6 +44,7 @@ export default function RootLayout({
     <html lang="id">
       <body className={`${sora.variable} ${inter.variable} antialiased`}>
         <CartProvider>{children}</CartProvider>
+        <PwaRegister />
       </body>
     </html>
   );
