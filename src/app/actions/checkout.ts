@@ -2,6 +2,7 @@
 
 import { createClient } from "@/lib/supabase/server";
 import type { CartItem } from "@/lib/types";
+import { randomUUID } from "crypto";
 
 export type CheckoutInput = {
   customerName: string;
@@ -58,27 +59,25 @@ export async function placeOrder(input: CheckoutInput): Promise<CheckoutResult> 
 
   const subtotal = input.items.reduce((s, i) => s + i.price * i.quantity, 0);
   const orderNumber = generateOrderNumber();
+  const orderId = randomUUID();
 
-  const { data: order, error: orderErr } = await supabase
-    .from("orders")
-    .insert({
-      order_number: orderNumber,
-      customer_name: input.customerName.trim(),
-      customer_phone: input.customerPhone.trim(),
-      customer_address: input.customerAddress.trim(),
-      notes: input.notes?.trim() || null,
-      status: "pending",
-      subtotal,
-    })
-    .select("id")
-    .single();
+  const { error: orderErr } = await supabase.from("orders").insert({
+    id: orderId,
+    order_number: orderNumber,
+    customer_name: input.customerName.trim(),
+    customer_phone: input.customerPhone.trim(),
+    customer_address: input.customerAddress.trim(),
+    notes: input.notes?.trim() || null,
+    status: "pending",
+    subtotal,
+  });
 
-  if (orderErr || !order) {
+  if (orderErr) {
     return { ok: false, error: "Gagal membuat pesanan. Coba lagi." };
   }
 
   const orderItems = input.items.map((i) => ({
-    order_id: order.id,
+    order_id: orderId,
     product_id: i.product_id,
     product_name: i.name,
     unit_price: i.price,
