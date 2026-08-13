@@ -3,6 +3,7 @@ import { Sora, Inter } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/lib/cart-store";
 import PwaRegister from "@/components/PwaRegister";
+import InstallPrompt from "@/components/InstallPrompt";
 
 const sora = Sora({
   variable: "--font-sora",
@@ -45,6 +46,7 @@ export default function RootLayout({
       <body className={`${sora.variable} ${inter.variable} antialiased`}>
         <CartProvider>{children}</CartProvider>
         <PwaRegister />
+        <InstallPrompt />
       </body>
     </html>
   );
