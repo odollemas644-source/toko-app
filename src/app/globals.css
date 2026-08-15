@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  /* ---- Palet: pasar segar ---- */
-  --background: #FAF7EF;      /* off-white hangat, kertas beras */
+  /* ---- Palet: Grosir Abadi (merah-emas) ---- */
+  --background: #FBF5E6;      /* krem hangat */
   --surface: #FFFFFF;
-  --ink: #23281F;             /* charcoal kehijauan, teks utama */
-  --ink-muted: #6B7266;
-  --primary: #2F6B4F;         /* hijau daun tua */
-  --primary-dark: #1F4D38;
-  --sage: #E8EFE6;            /* chip / card muda */
-  --accent: #F2A73B;          /* mangga — CTA & highlight */
-  --accent-dark: #D98F1F;
-  --price: #D64545;           /* merah diskon */
-  --border: #E7E2D4;
+  --ink: #2A1B15;             /* coklat gelap, teks utama */
+  --ink-muted: #7A6A5A;
+  --primary: #A61E22;         /* merah brand */
+  --primary-dark: #7A1518;
+  --sage: #FBF0D2;            /* chip / card muda (emas pucat) */
+  --accent: #E8C524;          /* emas — CTA & highlight */
+  --accent-dark: #B8940F;
+  --price: #C41E22;           /* merah harga/diskon */
+  --border: #EDE0C0;
 }
 
 @theme inline {

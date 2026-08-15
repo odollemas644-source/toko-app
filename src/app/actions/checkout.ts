@@ -9,6 +9,7 @@ export type CheckoutInput = {
   customerPhone: string;
   customerAddress: string;
   notes?: string;
+  memberId?: string;
   items: CartItem[];
 };
 
@@ -68,6 +69,7 @@ export async function placeOrder(input: CheckoutInput): Promise<CheckoutResult> 
     customer_phone: input.customerPhone.trim(),
     customer_address: input.customerAddress.trim(),
     notes: input.notes?.trim() || null,
+    member_id: input.memberId?.trim() || null,
     status: "pending",
     subtotal,
   });

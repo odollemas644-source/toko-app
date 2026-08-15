@@ -48,6 +48,7 @@ export type Order = {
   customer_phone: string;
   customer_address: string;
   notes: string | null;
+  member_id: string | null;
   status: "pending" | "diproses" | "dikirim" | "selesai" | "dibatalkan";
   status_updated_at: string;
   subtotal: number;

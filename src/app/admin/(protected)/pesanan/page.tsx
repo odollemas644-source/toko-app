@@ -40,6 +40,14 @@ export default async function AdminOrdersPage() {
                   />
                 </div>
                 <p className="text-xs mb-2" style={{ color: "var(--ink-muted)" }}>{order.customer_address}</p>
+                {order.member_id && (
+                  <p
+                    className="text-xs mb-2 font-semibold inline-block px-2 py-1 rounded-full"
+                    style={{ background: "var(--sage)", color: "var(--accent-dark)" }}
+                  >
+                    🎟️ ID Member: {order.member_id}
+                  </p>
+                )}
                 {order.notes && (
                   <p className="text-xs mb-2 italic" style={{ color: "var(--ink-muted)" }}>Catatan: {order.notes}</p>
                 )}

@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Toko Segar Jaya",
-    short_name: "Toko Segar",
+    name: "Grosir Abadi",
+    short_name: "Grosir Abadi",
     description: "Belanja kebutuhan harian, segar & lengkap.",
     start_url: "/",
     display: "standalone",

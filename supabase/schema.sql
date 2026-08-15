@@ -57,6 +57,8 @@ create table if not exists orders (
   customer_address text not null,
   notes text,
   status text not null default 'pending',  -- pending | diproses | dikirim | selesai | dibatalkan
+  status_updated_at timestamptz not null default now(),
+  member_id text,          -- ID member (opsional), diisi sendiri oleh customer buat dapet poin
   subtotal numeric(12,2) not null,
   created_at timestamptz not null default now()
 );

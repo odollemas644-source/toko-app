@@ -22,11 +22,19 @@ export default function Header() {
       style={{ background: "var(--primary)" }}
     >
       <div className="flex items-center justify-between mb-3">
-        <div>
-          <p className="text-white/70 text-xs">Belanja di</p>
-          <h1 className="text-white font-display font-bold text-lg leading-tight">
-            Toko Segar Jaya
-          </h1>
+        <div className="flex items-center gap-2.5">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo.png"
+            alt="Grosir Abadi"
+            className="w-10 h-10 rounded-xl shrink-0"
+          />
+          <div>
+            <p className="text-white/70 text-xs">Belanja di</p>
+            <h1 className="text-white font-display font-bold text-lg leading-tight">
+              Grosir Abadi
+            </h1>
+          </div>
         </div>
         <Link
           href="/keranjang"

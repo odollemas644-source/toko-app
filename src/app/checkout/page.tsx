@@ -18,6 +18,7 @@ export default function CheckoutPage() {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [notes, setNotes] = useState("");
+  const [memberId, setMemberId] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -30,6 +31,7 @@ export default function CheckoutPage() {
       customerPhone: phone,
       customerAddress: address,
       notes,
+      memberId,
       items,
     });
     setLoading(false);
@@ -103,6 +105,18 @@ export default function CheckoutPage() {
               className="rounded-xl border px-3 py-2.5 text-sm outline-none resize-none"
               style={{ borderColor: "var(--border)" }}
             />
+            <div>
+              <input
+                placeholder="ID Member (opsional)"
+                value={memberId}
+                onChange={(e) => setMemberId(e.target.value)}
+                className="w-full rounded-xl border px-3 py-2.5 text-sm outline-none"
+                style={{ borderColor: "var(--border)" }}
+              />
+              <p className="text-[11px] mt-1" style={{ color: "var(--ink-muted)" }}>
+                Sudah jadi member? Isi ID member biar poin langsung masuk pas ambil belanjaan.
+              </p>
+            </div>
           </div>
         </div>
 
